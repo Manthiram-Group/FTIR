@@ -37,9 +37,9 @@ def combining_series():
         # Use the first file as the reference for substracting others
         referenced_raw_df[file.replace('.csv', '')] = df.iloc[:, 1] - reference
 
-        # Write combined dataframe to a new CSV
-        combined_raw_df.to_csv('combined_raw.csv', index=False)
-        referenced_raw_df.to_csv('referenced_raw.csv', index=False)
+    # Write combined dataframe to a new CSV
+    combined_raw_df.to_csv('combined_raw.csv', index=False)
+    referenced_raw_df.to_csv('referenced_raw.csv', index=False)
 
 
 def bkg_fitting(fitter,x,y):
@@ -55,7 +55,7 @@ def bkg_fitting(fitter,x,y):
         bkg, params = baseline_fitter.snip(y, max_half_window=40, decreasing=True, smooth_half_window=3)
     return bkg, params
 
-def bkg_substraction(df,fitter):
+def bkg_subtraction(df,fitter):
 
     df_bkg_subtracted = pd.DataFrame()
     x = df.iloc[:,0]
